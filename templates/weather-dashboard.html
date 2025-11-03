@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col justify-center items-center">
+ 
+
+    <div class="bg-white shadow-md rounded-lg w-full max-w-6xl p-6 flex flex-row ">
+        <div class="w-1/2">
+            <h1 class="text-2xl font-bold text-center mb-6 text-gray-800">7-Day Weather Prediction</h1>
+      
+            <table class="table-auto w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border border-gray-300 px-4 py-2 text-left font-medium text-gray-700">Day</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left font-medium text-gray-700">Temperature (3 PM)</th>
+                        <th class="border border-gray-300 px-4 py-2 text-left font-medium text-gray-700">Will it Rain Tomorrow?</th>
+                    </tr>
+                </thead>
+                <tbody id="weatherTableBody"></tbody>
+            </table>
+        </div>
+        <div class="bg-white shadow-md rounded-lg mt-6 w-full max-w-lg ml-10">
+            <h2 class="text-xl font-bold text-center mb-4 text-gray-800">Confusion Matrix</h2>
+            <div class="flex justify-center">
+                <img id="confusionMatrixImg" src="/static/confusion_matrix.png" alt="Confusion Matrix" class="w-full max-w-sm rounded-md shadow-md">
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="text-center mt-5">
+            <a href="/" class="inline-block px-6 py-2 bg-gray-500 text-white font-medium rounded shadow hover:bg-gray-600 transition">Back to Scenarios</a>
+        </div>
+    </div>
+
+
+   
+
+    <script>
+        fetch('http://127.0.0.1:5000/7-day-weather')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('weatherTableBody');
+                data.forEach((day, index) => {
+                    const row = document.createElement('tr');
+                    row.className = "bg-white hover:bg-gray-100";
+                    row.innerHTML = `
+                        <td class="border border-gray-300 px-4 py-2">${index + 1}</td>
+                        <td class="border border-gray-300 px-4 py-2">${day.Temp3pm}</td>
+                        <td class="border border-gray-300 px-4 py-2">${day.RainTomorrow}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(err => console.error(err));
+    </script>
+</body>
+</html>

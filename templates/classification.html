@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classification Results</title>
+
+    <link rel="stylesheet" href="/static/css/output.css">
+</head>
+<body class="bg-white font-Popins">
+
+    <div class="max-w-4xl mx-auto py-10 px-6">
+
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Classification Results</h1>
+        </div>
+
+        <div class="flex flex-row w-full items-center justify-between gap-4">
+    
+            <div class=" shadow-lg rounded-lg p-6 w-1/2">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">Decision Tree Classifier</h2>
+                <form method="POST" class="space-y-4">
+                    <label for="tree_height" class="block text-sm font-medium text-gray-700">Enter Tree Height (2-10):</label>
+                    <input type="number" id="tree_height" name="tree_height" min="2" max="10" required
+                        class="w-full p-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        <button type="submit"
+                            class="tracking-wider uppercase bg-gradient-to-tl from-yellow-400 to-orange-400 text-white px-4 py-2 rounded-md shadow-[0_4px_15px_rgba(252,211,77,0.4),_0_6px_20px_rgba(251,146,60,0.4)] transition ease-in-out duration-300 transform hover:-translate-y-1  hover:shadow-[0_8px_20px_rgba(252,211,77,0.5),_0_12px_30px_rgba(251,146,60,0.5)]">
+                            Submit
+                        </button>
+
+                    
+                </form>
+            </div>
+    
+            {% if accuracy is not none %}
+            <div class="bg-white shadow-lg rounded-lg p-6 w-1/2">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">Results</h2>
+                <p class="text-gray-600">Accuracy: <span class="font-bold">{{ accuracy }}%</span></p>
+                <p class="text-gray-600">Precision: <span class="font-bold">{{ precision }}</span></p>
+                <p class="text-gray-600">F1 Score: <span class="font-bold">{{ f1 }}</span></p>
+                <div class="mt-2">
+                    <a href="/"
+                        class="bg-zinc-600 text-white px-4 py-2 rounded-md shadow inline-block">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="bg-white shadow-lg rounded-lg p-6 mt-6">
+            <h2 class="text-xl font-semibold text-gray-700 mb-4">Visualization</h2>
+            <img src="{{ tree_image_path }}" alt="Decision Tree" class="w-full border rounded-lg">
+        </div>
+        {% endif %}
+        
+    </div>
+</body>
+</html>

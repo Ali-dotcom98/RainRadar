@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        table th, table td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <button>Home</button>
+        <button>About</button>
+        <button>Contact</button>
+        <button>Help</button>
+    </div>
+    <div class="container">
+        <h1>Weather Data Analysis</h1>
+        <form id="weatherForm">
+            <input type="text" name="city" id="city" placeholder="Enter City Name" required autocomplete="off">
+            <button type="submit">Get Weather Summary</button>
+        </form>
+        <div id="suggestions"></div>
+        <div id="result" style="margin-top: 20px;">
+            
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('weatherForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const city = document.getElementById('city').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Loading...';
+
+            try {
+                
+                const response = await fetch('/weather', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `city=${city}`
+                });
+                const data = await response.json();
+
+                if (data.error) {
+                    resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
+                } else {
+                    const table = document.createElement('table');
+                    const thead = document.createElement('thead');
+                    const headerRow = document.createElement('tr');
+                    headerRow.innerHTML = `
+                        <th>Metric</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                        <th>Mean</th>
+                        <th>Std</th>
+                    `;
+                    thead.appendChild(headerRow);
+                    table.appendChild(thead);
+
+                    const tbody = document.createElement('tbody');
+                    let hasValidData = false;
+
+
+                    for (const [metric, values] of Object.entries(data)) {
+                        if (values.min !== 'N/A' || values.max !== 'N/A' || values.mean !== 'N/A' || values.std !== 'N/A') {
+                            hasValidData = true;
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td>${metric}</td>
+                                <td>${values.min || 'N/A'}</td>
+                                <td>${values.max || 'N/A'}</td>
+                                <td>${values.mean || 'N/A'}</td>
+                                <td>${values.std || 'N/A'}</td>
+                            `;
+                            tbody.appendChild(row);
+                        }
+                    }
+
+                    if (hasValidData) {
+                        table.appendChild(tbody);
+                        resultDiv.innerHTML = '';
+                        resultDiv.appendChild(table);
+                    } else {
+                        resultDiv.innerHTML = '<p>No valid data to display.</p>';
+                    }
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color: red;">An error occurred: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

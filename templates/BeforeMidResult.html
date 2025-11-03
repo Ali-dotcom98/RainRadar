@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ technique }} Classification Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-5">
+
+    <div class="max-w-screen-lg mx-auto text-center">
+        <h1 class="text-3xl font-semibold mb-8">Classification Results for {{ technique }}</h1>
+        
+        <p class="text-xl font-medium mb-4">Accuracy: {{ accuracy * 100 }}%</p>
+
+        <h2 class="text-2xl font-semibold mb-4">Confusion Matrix</h2>
+        <img src="{{ cm_image_url }}" alt="Confusion Matrix" class="mx-auto mb-8">
+
+        <a href="/" class="text-blue-500 hover:underline">Go back to select another technique</a>
+    </div>
+
+</body>
+</html>

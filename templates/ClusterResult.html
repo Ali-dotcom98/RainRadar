@@ -1,0 +1,38 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto  p-6 bg-white shadow-lg rounded-lg">
+        <div class="flex flex-r">
+            <div class="relative">
+                <h1 class="text-3xl font-bold text-center text-gray-800">Clustering Results</h1>
+                <h3 class="text-xl font-semibold text-gray-700 mt-6">{{ scenario_title }}</h3>
+                <p class="text-gray-600 mt-2">{{ scenario_description }}</p>
+                <div class="mt-6">
+                    <h5 class="text-lg font-medium text-gray-700">Results:</h5>
+                    <p class="text-gray-600">{{ result_summary }}</p>
+                </div>
+                <div class="mt-8 text-center absolute bottom-0">
+                    <a href="/ClusterSceniro" class="inline-block px-6 py-2 bg-gray-500 text-white font-medium rounded shadow hover:bg-gray-600 transition">Back to Scenarios</a>
+                </div>
+            </div>
+            <div>
+                {% if graph_path %}
+                <div class="mt-6">
+                    <h5 class="text-lg font-medium text-gray-700">Visualization:</h5>
+                    <img src="{{ url_for('static', filename='graphs/' + graph_path.split('/')[-1]) }}" alt="Clustering Graph" class="w-full h-auto mt-2 rounded-lg shadow">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+       
+        
+    
+    </div>
+</body>
+</html>
