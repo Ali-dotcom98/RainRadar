@@ -80,5 +80,5 @@ pip install -r requirements.txt
 # Run the application
 python app.py
 ```
-![RainRadar Screenshot](https://github.com/Ali-dotcom98/RainRadar/blob/main/RainRadar_Mockup.png?raw=true)
+![RainRadar Screenshot](https://github.com/Ali-dotcom98/RainRadar/blob/main/RainRadar_Mockup2.png?raw=true)
 
