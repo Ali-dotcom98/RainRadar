@@ -6,28 +6,28 @@
 
 ---
 
-## 🚀 Overview
+## Overview
 
 RainRadar combines **classification**, **association**, and **clustering** techniques to reveal meaningful relationships between weather variables like **temperature**, **humidity**, **pressure**, and **rainfall**. Through advanced algorithms, the system identifies hidden trends, predicts future conditions, and visualizes complex patterns with ease.
 
 ---
 
-## 🧠 Machine Learning Components
+## Machine Learning Components
 
-### 🧩 Classification
+### Classification
 - Predicts weather conditions such as *sunny*, *rainy*, or *cloudy* using:
   - **K-Nearest Neighbors (KNN)**
   - **Naive Bayes**
   - **Support Vector Machine (SVM)**
   - **Artificial Neural Networks (ANN)**
 
-### 🔗 Association Rule Mining
+### Association Rule Mining
 - Discovers relationships between variables using:
   - **Apriori Algorithm**
   - **FP-Growth Algorithm**
 - Example: *“High humidity and low pressure often indicate rainfall.”*
 
-### 🎯 Clustering
+### Clustering
 - Groups similar weather trends using:
   - **K-Means Clustering**
   - **Hierarchical Clustering**
@@ -35,21 +35,21 @@ RainRadar combines **classification**, **association**, and **clustering** techn
 
 ---
 
-## 📊 Features
+## 🌟 Features
 
-### 📈 Interactive Data Visualization  
+### Interactive Data Visualization  
 - Dynamic charts and graphs to visualize temperature, humidity, rainfall, and more.  
 - Compare and explore classification accuracy, cluster groups, and association patterns.
 
-### 🌦️ Real-Time Weather Tracking  
+### Real-Time Weather Tracking  
 - Real-time updates for temperature and rainfall predictions.  
 - Easy-to-understand dashboard for quick insights.
 
-### 🔍 Smart Analysis  
+### Smart Analysis  
 - Discover hidden trends and correlations in historical data.  
 - Gain deeper insights through automated pattern discovery.
 
-### 💡 User Dashboard  
+### User Dashboard  
 - Simple, interactive interface for exploring results of various models.  
 - Filter data by city, region, or date for targeted analysis.
 
