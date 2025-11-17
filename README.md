@@ -1,4 +1,4 @@
-# 🌦️ RainRadar
+## 🌦️ RainRadar
 
 **RainRadar** is an **AI-Based Weather Analysis and Prediction System** that leverages **data mining** and **machine learning algorithms** to analyze and forecast weather patterns. The platform offers **interactive visualizations**, **AI-driven predictions**, and **pattern discovery** to help users understand and anticipate weather behavior more effectively.
 
